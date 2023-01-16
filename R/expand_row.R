@@ -17,30 +17,37 @@
 #' @return updated dataframe
 #'
 #' @examples expand_row(df, row_contents_vector, row_number)
+
 expand_row <- function(df, vector, row)
 {
-  NO_COLUMN_FOUND = -999999
+  require(tidyverse)
 
-  # loop across contents of vector
-  for (i in length(vector)){
+    # loop across contents of vector
+  for (i in 1:length(vector[[1]])){
+
     # determine index of existing column
-    col = find_existing_column(df, vector[[i]])
+    col = find_existing_column(df, vector[[1]][i])
+
 
     # check to see if column for current element DOES NOT exists
-    if(col == NO_COLUMN_FOUND){
+    if(col == -999999){
 
       # build column
       df <- df %>%
         mutate(newcol = 0)
 
+      # place indicator in column
+      df$newcol[row] = 1
+
       # name new column
-      `colnames<-`(df, c(colnames(df)[-1], vector[[i]]))
+      df <- `colnames<-`(df,
+                           c(colnames(df)[-length(df)], vector[[1]][i]))
+    }else{
 
+      df[[col]][row] = 1
     }
-
   }
-    # place indicator value into column
-    df$length(df)[row] = 1
+
 
     # return the updated df
     return(df)

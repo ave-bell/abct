@@ -13,16 +13,16 @@
 #' @return index of column or NO_COLUMN_FOUND (-999999)
 #'
 #' @examples findExistingColumn(insertCommas, "acetaminophen_mg")
+
 find_existing_column <- function(df, colname){
 
-
   # initialize index to default value
-  columnIndex = NO_COLUMN_FOUND
+  columnIndex = -999999
 
   # create vector of column names in dataframe
   colNameVector <- colnames(df)
 
-  if(any(colNameVector == colName)){
+  if(any(colNameVector == colname)){
 
     columnIndex = which(colNameVector == colname)
 

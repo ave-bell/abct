@@ -7,12 +7,12 @@ This function performs a column expansion. A column expansion is required when
 multiple pieces of data are included in a single column. This function assumes that
 all seperator characters are correctly located, and the data in the column is spelled correctly.}
 \usage{
-column_expansion(df, colname, separator)
+column_expansion(df, column, separator)
 }
 \arguments{
 \item{df}{dataframe}
 
-\item{colname}{name of the column for expansion}
+\item{column}{name of the column for expansion}
 
 \item{separator}{character that separates the data}
 }
@@ -26,6 +26,6 @@ multiple pieces of data are included in a single column. This function assumes t
 all seperator characters are correctly located, and the data in the column is spelled correctly.
 }
 \examples{
-column_expansion(df, Diseases, ",")
+column_expansion(df, 1, ",")
 
 }
